@@ -17,20 +17,16 @@ export default function Incidents() {
     function navigationDetail(){
         navigation.navigate('Detail');
     }
-    function getIncidentes() {
-        api.get('incidents')
-           .then(res => {
-               const incidents = res.data;
-               this.setState({incidents});
-
-               console.log(incidents);
-           })
-
-
-    }
-
-
     
+
+    api.get('incidents')
+           .then(function (response) {
+           console.log(response.data);
+          })
+           .catch(function (error) {
+             console.log(error);
+        });
+
 
     return (
         <View style={styles.conteiner}>
@@ -50,7 +46,7 @@ export default function Incidents() {
               showsVerticalScrollIndicator={false}
               renderItem={() => (
                 <View style={styles.incident}>
-                <Text style={styles.incidentProperty}>ONG:</Text>
+                <Text style={styles.incidentProperty}>ONG   :</Text>
                 <Text style={styles.incidentValue}>APAD</Text>
 
                 <Text style={styles.incidentProperty}>CASO:</Text>
